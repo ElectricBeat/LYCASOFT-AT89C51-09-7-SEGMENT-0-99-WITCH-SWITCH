@@ -1,0 +1,231 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        12/20/2018  12:17:51  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE STARTUP.obj, 7_SEGMENT_0-99_WITH_SWITCH.obj TO 7_SEGMENT_0-99_WITH_SWITCH
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  7_SEGMENT_0-99_WITH_SWITCH.obj (7_SEGMENT_0_99_WITH_SWITCH)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  7_SEGMENT_0-99_WITH_SWITCH (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000CH     UNIT         ?DT?7_SEGMENT_0_99_WITH_SWITCH
+            DATA    0014H     0004H     UNIT         _DATA_GROUP_
+            IDATA   0018H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     008BH     UNIT         ?C?LIB_CODE
+            CODE    0917H     0077H     UNIT         ?PR?SEGMENT_RUNNER?7_SEGMENT_0_99_WITH_SWITCH
+            CODE    098EH     002DH     UNIT         ?PR?MAIN?7_SEGMENT_0_99_WITH_SWITCH
+            CODE    09BBH     0027H     UNIT         ?PR?_T1_DELAY?7_SEGMENT_0_99_WITH_SWITCH
+            CODE    09E2H     0015H     UNIT         ?PR?_SDELAY?7_SEGMENT_0_99_WITH_SWITCH
+            CODE    09F7H     000DH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   7_SEGMENT_0-99_WITH_SWITCH (?C_STARTUP)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?7_SEGMENT_0_99_WITH_SWITCH
+  +--> ?C_INITSEG
+
+?PR?MAIN?7_SEGMENT_0_99_WITH_SWITCH              -----    -----
+  +--> ?PR?SEGMENT_RUNNER?7_SEGMENT_0_99_WIT...
+
+?PR?SEGMENT_RUNNER?7_SEGMENT_0_99_WIT...         0014H    0004H
+  +--> ?PR?_SDELAY?7_SEGMENT_0_99_WITH_SWITCH
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/20/2018  12:17:51  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  7_SEGMENT_0-99_WITH_SWITCH (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0800H         SEGMENT       ?C_C51STARTUP
+  I:0018H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0803H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0800H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0800H         LINE#         133
+  C:0802H         LINE#         134
+  C:0803H         LINE#         135
+  C:0804H         LINE#         136
+  C:0806H         LINE#         185
+  C:0809H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        7_SEGMENT_0_99_WITH_SWITCH
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00B0H.0       PUBLIC        DIG1
+  C:09EBH         PUBLIC        _sdelay
+  B:00B0H.1       PUBLIC        DIG2
+  B:00B0H.2       PUBLIC        DIG3
+  B:00B0H.3       PUBLIC        DIG4
+  D:0008H         PUBLIC        Count
+  C:098EH         PUBLIC        main
+  B:0090H.0       PUBLIC        SW
+  C:0917H         PUBLIC        Segment_Runner
+  B:0088H.7       PUBLIC        TF1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/20/2018  12:17:51  PAGE 3
+
+
+  C:09BBH         PUBLIC        _T1_delay
+  D:000AH         PUBLIC        Data
+  -------         PROC          _T1_DELAY
+  D:0006H         SYMBOL        a
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:09BBH         LINE#         3
+  C:09BBH         LINE#         4
+  C:09BBH         LINE#         6
+  C:09CBH         LINE#         7
+  C:09CBH         LINE#         8
+  C:09CEH         LINE#         9
+  C:09D1H         LINE#         10
+  C:09D3H         LINE#         11
+  C:09D6H         LINE#         12
+  C:09D8H         LINE#         13
+  C:09DAH         LINE#         14
+  C:09E1H         LINE#         15
+  -------         ENDPROC       _T1_DELAY
+  C:09E5H         SYMBOL        L?0023
+  -------         PROC          L?0022
+  -------         ENDPROC       L?0022
+  C:09E5H         SYMBOL        L?0023
+  -------         PROC          _SDELAY
+  D:0007H         SYMBOL        d
+  C:09EBH         LINE#         18
+  C:09EBH         LINE#         19
+  C:09EBH         LINE#         20
+  C:09F6H         LINE#         21
+  -------         ENDPROC       _SDELAY
+  -------         PROC          SEGMENT_RUNNER
+  -------         DO            
+  D:0014H         SYMBOL        Disp1_Data
+  D:0016H         SYMBOL        Disp2_Data
+  D:0082H         SYMBOL        Disp3_Data
+  D:0006H         SYMBOL        Disp4_Data
+  D:0002H         SYMBOL        Temp_DATA
+  -------         ENDDO         
+  C:0917H         LINE#         40
+  C:0917H         LINE#         41
+  C:0917H         LINE#         45
+  C:091BH         LINE#         46
+  C:092AH         LINE#         47
+  C:0939H         LINE#         48
+  C:0944H         LINE#         49
+  C:0953H         LINE#         50
+  C:095CH         LINE#         51
+  C:0967H         LINE#         53
+  C:0969H         LINE#         54
+  C:0969H         LINE#         56
+  C:096CH         LINE#         57
+  C:096EH         LINE#         59
+  C:0970H         LINE#         60
+  C:0972H         LINE#         62
+  C:0975H         LINE#         63
+  C:0977H         LINE#         65
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/20/2018  12:17:51  PAGE 4
+
+
+  C:0979H         LINE#         66
+  C:097DH         LINE#         68
+  C:0980H         LINE#         69
+  C:0982H         LINE#         71
+  C:0984H         LINE#         72
+  C:0988H         LINE#         74
+  C:098BH         LINE#         75
+  C:098DH         LINE#         77
+  -------         ENDPROC       SEGMENT_RUNNER
+  -------         PROC          MAIN
+  C:098EH         LINE#         79
+  C:098EH         LINE#         80
+  C:098EH         LINE#         81
+  C:0991H         LINE#         82
+  C:0993H         LINE#         83
+  C:0996H         LINE#         85
+  C:0996H         LINE#         86
+  C:0996H         LINE#         87
+  C:0999H         LINE#         88
+  C:0999H         LINE#         89
+  C:09A1H         LINE#         90
+  C:09ACH         LINE#         91
+  C:09ACH         LINE#         92
+  C:09B1H         LINE#         93
+  C:09B1H         LINE#         94
+  C:09B6H         LINE#         96
+  C:09B9H         LINE#         97
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        7_SEGMENT_0_99_WITH_SWITCH
+
+  -------         MODULE        ?C?SIDIV
+  C:088CH         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:08C2H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_T1_DELAY?7_SEGMENT_0_99_WITH_SWITCH
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00FBH BYTE (12%) *
+******************************************************************************
+
+Program Size: data=25.0 xdata=0 code=519
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

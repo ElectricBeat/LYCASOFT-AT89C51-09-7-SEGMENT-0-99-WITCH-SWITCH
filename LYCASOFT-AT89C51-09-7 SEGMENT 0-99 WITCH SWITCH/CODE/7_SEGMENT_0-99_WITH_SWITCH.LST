@@ -1,0 +1,124 @@
+C51 COMPILER V9.53.0.0   7_SEGMENT_0_99_WITH_SWITCH                                        12/20/2018 12:17:51 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE 7_SEGMENT_0_99_WITH_SWITCH
+OBJECT MODULE PLACED IN 7_SEGMENT_0-99_WITH_SWITCH.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 7_SEGMENT_0-99_WITH_SWITCH.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
+                    - TABS(2)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          void T1_delay(int a)
+   4          {
+   5   1        int i;
+   6   1        for(i=0;i<a;i++)
+   7   1        {
+   8   2          TL1=0xFD;
+   9   2          TH1=0x4B;
+  10   2          TR1=1;
+  11   2          while(TF1==0);
+  12   2          TR1=0;
+  13   2          TF1=0;
+  14   2        }       
+  15   1      }
+  16          
+  17          #define SEGMENT P2
+  18          void sdelay (char d)
+  19          {
+  20   1        for(;d>0;d--);
+  21   1      }
+  22          
+  23          sbit DIG1 = P3^0;
+  24          sbit DIG2 = P3^1;
+  25          sbit DIG3 = P3^2;
+  26          sbit DIG4 = P3^3;
+  27          
+  28          sbit SW = P1^0;
+  29          
+  30          #define ON  1
+  31          #define OFF 0
+  32          
+  33          char Data[10] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0xff,0x67};      //comman cathode type;
+  34          //char Data[10]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};      //comman anode type;
+  35          
+  36          int Count;
+  37          
+  38          
+  39          
+  40          void Segment_Runner()
+  41          {
+  42   1        int Disp1_Data,Disp2_Data,Disp3_Data,Disp4_Data;
+  43   1        int Temp_DATA;
+  44   1        
+  45   1        Temp_DATA  = Count;           //6789;
+  46   1        Disp1_Data = Temp_DATA % 10;  //Disp1=9;
+  47   1        Temp_DATA  = Temp_DATA / 10;  //678;
+  48   1        Disp2_Data = Temp_DATA % 10;  //Disp=8;
+  49   1        Temp_DATA  = Temp_DATA / 10;  //67;
+  50   1        Disp3_Data = Temp_DATA % 10;  //7;
+  51   1        Disp4_Data = Temp_DATA / 10;
+  52   1                
+  53   1        DIG4=0; 
+  54   1        SEGMENT = Data[Disp4_Data];
+C51 COMPILER V9.53.0.0   7_SEGMENT_0_99_WITH_SWITCH                                        12/20/2018 12:17:51 PAGE 2   
+
+  55   1        //  T1_delay(7);
+  56   1        sdelay(300);
+  57   1        DIG4=1;
+  58   1      
+  59   1        DIG3=0; 
+  60   1        SEGMENT = Data[Disp3_Data]; 
+  61   1        //  T1_delay(7);
+  62   1        sdelay(300);
+  63   1        DIG3=1;
+  64   1                
+  65   1        DIG2=0; 
+  66   1        SEGMENT = Data[Disp2_Data];
+  67   1        //  T1_delay(7);
+  68   1        sdelay(300);
+  69   1        DIG2=1;
+  70   1      
+  71   1        DIG1=0; 
+  72   1        SEGMENT = Data[Disp1_Data]; 
+  73   1        //  T1_delay(7);
+  74   1        sdelay(300);
+  75   1        DIG1=1;
+  76   1        //  T1_delay(20);
+  77   1      }
+  78          
+  79          void main()
+  80          {
+  81   1        P2 = 0x00;
+  82   1        P3 = 0X00;
+  83   1        P1 = 0X01;
+  84   1        
+  85   1        while(1)
+  86   1        {
+  87   2          while(SW==1)
+  88   2          {
+  89   3            Count++;
+  90   3            if(Count>=10000)
+  91   3            {
+  92   4              Count=0;
+  93   4            }
+  94   3            while(SW==1);
+  95   3          }
+  96   2          Segment_Runner();
+  97   2        }
+  98   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    224    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
